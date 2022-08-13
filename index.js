@@ -20,7 +20,10 @@ Do the following:
    HINT: no function required
 */
 
-
+const votingAge = 19;
+if (votingAge >= 18) {
+  console.log(true);
+}
 
 /*
 Task 1b - Values (not auto tested)
@@ -35,7 +38,13 @@ Do the following:
 */
 
 
+let firstThing = 12345;
+let secondThing = 12345;
 
+if (firstThing === secondThing) {
+  firstThing = 54321;
+  console.log(firstThing);
+}
 
 
 /*
@@ -49,7 +58,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
+let stringOfNumbers = '12345';
+stringOfNumbers = parseInt(stringOfNumbers);
+console.log(stringOfNumbers);
 
 
 /*
@@ -61,8 +72,8 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b){
+  return a * b;
 }
 
 
@@ -77,8 +88,9 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(dogAge){
+  let dogYears = dogAge * 7;
+  return dogYears;
 }
 
 
@@ -129,8 +141,34 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
 */  
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(weight, age){
+  //checking if dog is a puppy
+  let percetage;
+  if (age >= 1) {
+    //dog is not a puppy
+    if (weight <= 5) {
+      percetage = .05;
+    } else if (weight >= 6 && weight <=10) {
+      percetage = .04;
+    } else if (weight >= 11 && weight <= 15) {
+      percetage = .03;
+    } else if (weight > 15) {
+      percetage = .02;
+    }
+  } else if (age < 0.16666666666666666) {
+    //puppy should be feeding from mommy dog
+  } else {
+    //dog is a puppy
+    if (age >= 0.16666666666666666 && age < 0.3333333333333333) {
+      percetage = .10;
+    } else if (age >= 0.3333333333333333 && age < 0.5833333333333334) {
+      percetage = .05;
+    } else {
+      percetage = .04;
+    }
+  }
+  let amountToEat = weight * percetage;
+  return amountToEat;
 }
 
 
@@ -158,6 +196,40 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 
 function game(user, computer){
   /*add your code here*/
+  if (!computer) {
+    let randomHitNum = Math.random();
+    let randomHit;
+    if (randomHitNum <= .333) {
+      randomHit = 'rock';
+    } else if (randomHitNum > .333 && randomHitNum <= .666) {
+      randomHit = 'paper';
+    } else {
+      randomHit = 'scissors';
+    }
+    computer = randomHit;
+  }
+  //we are going to handle a it's a tie
+  if (user === computer) return `it's a tie`;
+  //we are going to handle all the you win! conditions first
+  if (user === 'scissors') {
+    if (computer === 'paper') {
+      return 'you win!' ;
+    } else {
+      return 'you lose!'
+    }
+  } else if (user === 'rock') {
+    if (computer === 'scissors') {
+      return 'you win!' ;
+    } else {
+      return 'you lose!'
+    }
+  } else if (user === 'paper') {
+    if (computer === 'rock') {
+      return 'you win!' ;
+    } else {
+      return 'you lose!'
+    }
+  }
 }
 
 
@@ -173,8 +245,8 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(miles){
+  return miles * 0.621371;
 }
 
 
@@ -187,8 +259,8 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm){
+  return cm / 30.48;
 }
 
 
@@ -207,8 +279,10 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+function annoyingSong(startNum){
+  let subNum = startNum - 1;
+  console.log(`${startNum} bottles of soda on the wall, ${startNum} bottles of soda, take one down pass it around ${subNum} bottles of soda on the wall`);
+  return `${startNum} bottles of soda on the wall, ${startNum} bottles of soda, take one down pass it around ${subNum} bottles of soda on the wall`;
 }
 
 
@@ -227,8 +301,20 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(gradePercentage){
+  let gradeLetter;
+  if (gradePercentage >= 90) {
+    gradeLetter = 'A';
+  } else if (gradePercentage >= 80 && gradePercentage <= 89) {
+    return `you got a B`;
+  } else if (gradePercentage <= 79 && gradePercentage >= 70) {
+    return `you got a C`;
+  } else if (gradePercentage <= 69 && gradePercentage >= 60) {
+    return `you got a D`;
+  } else if (gradePercentage < 60) {
+    gradeLetter = 'F';
+  }
+  return `you got an ${gradeLetter}`;
 }
 
 
